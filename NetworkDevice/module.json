@@ -1,0 +1,14 @@
+{
+	"id": "{604C8E04-9DC7-4EF3-BCCB-8BCB97191184}",
+	"name": "NetworkDevice",
+	"type": 3,
+	"vendor": "universal",
+	"aliases": 
+	[
+		"Generic Network Device"
+	],
+	"parentRequirements": [],
+	"childRequirements": [],
+	"implemented": [],
+	"prefix": "NET"
+}
