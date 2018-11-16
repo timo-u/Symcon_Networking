@@ -5,7 +5,8 @@
 		{ "type": "NumberSpinner", "name": "Timeout", "caption": "Timeout", "suffix": "ms"},
 		{ "type": "NumberSpinner", "name": "UpdateInterval", "caption": "Update Interval" , "suffix": "s"},
 		{ "type": "NumberSpinner", "name": "RetryError", "caption": "Retry Error" },
-		{ "type": "NumberSpinner", "name": "RetryOk", "caption": "Retry OK" }
+		{ "type": "NumberSpinner", "name": "RetryOk", "caption": "Retry OK" },
+		{ "type": "CheckBox", "name": "Logging", "caption": "Logging" }
     ],
     "actions":
     [

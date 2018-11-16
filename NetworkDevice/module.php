@@ -13,6 +13,7 @@ declare(strict_types=1);
             $this->RegisterPropertyInteger('RetryError', 5);
             $this->RegisterPropertyInteger('RetryOk', 5);
             $this->RegisterPropertyInteger('UpdateInterval', 60);
+			$this->RegisterPropertyBoolean('Logging', false);
 
             $this->RegisterVariableBoolean('Online', $this->Translate('Online'), '~Alert.Reversed', 1);
 
@@ -27,6 +28,24 @@ declare(strict_types=1);
             //Never delete this line!
             parent::ApplyChanges();
             $this->SetTimerInterval('Update', $this->ReadPropertyInteger('UpdateInterval') * 1000);
+			
+			if ($this->ReadPropertyBoolean('Logging')) {
+                $archiveId = IPS_GetInstanceListByModuleID('{43192F0B-135B-4CE7-A0A7-1475603F3060}')[0];
+
+                AC_SetLoggingStatus($archiveId, $this->GetIDForIdent('Online'), true);
+                AC_SetAggregationType($archiveId, $this->GetIDForIdent('Online'), 0); // 0 Standard, 1 Zähler
+                AC_SetGraphStatus($archiveId, $this->GetIDForIdent('Online'), true);
+
+               
+                IPS_ApplyChanges($archiveId);
+            } else {
+                $archiveId = IPS_GetInstanceListByModuleID('{43192F0B-135B-4CE7-A0A7-1475603F3060}')[0];
+
+                AC_SetLoggingStatus($archiveId, $this->GetIDForIdent('Online'), false);
+                AC_SetGraphStatus($archiveId, $this->GetIDForIdent('Online'), false);
+
+                IPS_ApplyChanges($archiveId);
+            }
         }
 
         public function Update()
