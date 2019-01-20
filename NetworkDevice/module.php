@@ -65,7 +65,7 @@ declare(strict_types=1);
                     SetValue($this->GetIDForIdent('Online'), true);
                 } else {
                     $this->SetBuffer('OnlineCount', intval($this->GetBuffer('OnlineCount')) + 1);
-                    $this->SendDebug('Update()', 'OnlineCount => '.$this->GetBuffer('OnlineCount'), 0);
+                    $this->SendDebug('Update()', 'OnlineCount >= '.$this->GetBuffer('OnlineCount'), 0);
                 }
             } else {
                 $this->SendDebug('Update()', 'Sys_Ping('.$host.','.$timeout.') => false', 0);
