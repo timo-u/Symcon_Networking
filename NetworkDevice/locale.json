@@ -1,11 +1,11 @@
 {
 	"translations": {
 		"de": {
-			"Phone Number" : "Telefonnummer",
-			"Receive Scpript" : "Empfangs-Script",
-			"Message" : "Nachticht",
-			"Send Test Message" : "Testnachticht senden",
-			"Connection Failed" : "Verbindung fehlgeschlagen"
+			"Phone Number": "Telefonnummer",
+			"Receive Scpript": "Empfangs-Script",
+			"Message": "Nachticht",
+			"Send Test Message": "Testnachticht senden",
+			"Connection Failed": "Verbindung fehlgeschlagen"
 		}
 	}
 }

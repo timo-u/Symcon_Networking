@@ -3,8 +3,7 @@
 	"name": "NetworkDevice",
 	"type": 3,
 	"vendor": "universal",
-	"aliases": 
-	[
+	"aliases": [
 		"Generic Network Device"
 	],
 	"parentRequirements": [],
