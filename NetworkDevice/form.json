@@ -1,44 +1,18 @@
 {
-  "elements": [
-    {
-      "type": "ValidationTextBox",
-      "name": "Host",
-      "caption": "Host"
-    },
-    {
-      "type": "NumberSpinner",
-      "name": "Timeout",
-      "caption": "Timeout",
-      "suffix": "ms"
-    },
-    {
-      "type": "NumberSpinner",
-      "name": "UpdateInterval",
-      "caption": "Update Interval",
-      "suffix": "s"
-    },
-    {
-      "type": "NumberSpinner",
-      "name": "RetryError",
-      "caption": "Retry Error"
-    },
-    {
-      "type": "NumberSpinner",
-      "name": "RetryOk",
-      "caption": "Retry OK"
-    },
-    {
-      "type": "CheckBox",
-      "name": "Logging",
-      "caption": "Logging"
-    }
-  ],
-  "actions": [
-    {
-      "type": "Button",
-      "label": "Run Test",
-      "onClick": "echo NET_Update($id);"
-    }
-  ],
-  "status": []
+    "elements":
+    [
+        { "type": "ValidationTextBox", "name": "Host", "caption": "Host" },
+		{ "type": "NumberSpinner", "name": "Timeout", "caption": "Timeout", "suffix": "ms"},
+		{ "type": "NumberSpinner", "name": "UpdateInterval", "caption": "Update Interval" , "suffix": "s"},
+		{ "type": "NumberSpinner", "name": "RetryError", "caption": "Retry Error" },
+		{ "type": "NumberSpinner", "name": "RetryOk", "caption": "Retry OK" }
+    ],
+    "actions":
+    [
+		{ "type": "Button", "label": "Run Test",  "onClick": "echo NET_Update($id);"  }
+   
+    ],
+    "status":
+    [
+    ]
 }
