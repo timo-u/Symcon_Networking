@@ -62,7 +62,7 @@ declare(strict_types=1);
                 }
 
                 if (intval($this->GetBuffer('OnlineCount')) >= $this->ReadPropertyInteger('RetryOk')) {
-                    SetValue($this->GetIDForIdent('Online'), true);
+                    $this->SetValue('Online', true);
                 } else {
                     $this->SetBuffer('OnlineCount', intval($this->GetBuffer('OnlineCount')) + 1);
                     $this->SendDebug('Update()', 'OnlineCount >= '.$this->GetBuffer('OnlineCount'), 0);
@@ -75,7 +75,7 @@ declare(strict_types=1);
                 }
 
                 if (intval($this->GetBuffer('ErrorCount')) >= $this->ReadPropertyInteger('RetryError')) {
-                    SetValue($this->GetIDForIdent('Online'), false);
+                    $this->SetValue('Online', false);
                 } else {
                     $this->SetBuffer('ErrorCount', intval($this->GetBuffer('ErrorCount')) + 1);
                     $this->SendDebug('Update()', 'ErrorCount => '.$this->GetBuffer('ErrorCount'), 0);
