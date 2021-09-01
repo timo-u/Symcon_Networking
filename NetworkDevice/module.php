@@ -27,24 +27,42 @@ declare(strict_types=1);
             //Never delete this line!
             parent::ApplyChanges();
             $this->SetTimerInterval('Update', $this->ReadPropertyInteger('UpdateInterval') * 1000);
-            /*
-                        if ($this->ReadPropertyBoolean('Logging')) {
-                            $archiveId = IPS_GetInstanceListByModuleID('{43192F0B-135B-4CE7-A0A7-1475603F3060}')[0];
-
-                            AC_SetLoggingStatus($archiveId, $this->GetIDForIdent('Online'), true);
-                            AC_SetAggregationType($archiveId, $this->GetIDForIdent('Online'), 0); // 0 Standard, 1 Zähler
-                            AC_SetGraphStatus($archiveId, $this->GetIDForIdent('Online'), true);
-
-                            IPS_ApplyChanges($archiveId);
-                        } else {
-                            $archiveId = IPS_GetInstanceListByModuleID('{43192F0B-135B-4CE7-A0A7-1475603F3060}')[0];
-
-                            AC_SetLoggingStatus($archiveId, $this->GetIDForIdent('Online'), false);
-                            AC_SetGraphStatus($archiveId, $this->GetIDForIdent('Online'), false);
-
-                            IPS_ApplyChanges($archiveId);
-                        }
-                        */
+        }
+        public function EnableLogging()
+        {
+            $archiveId = IPS_GetInstanceListByModuleID('{43192F0B-135B-4CE7-A0A7-1475603F3060}')[0];
+    
+            $arr = ['Online'];
+    
+            foreach ($arr as &$ident) {
+                $id = @$this->GetIDForIdent($ident);
+    
+                if ($id == 0) {
+                    continue;
+                }
+                AC_SetLoggingStatus($archiveId, $id, true);
+                AC_SetAggregationType($archiveId, $id, 0); // 0 Standard, 1 Zähler
+                AC_SetGraphStatus($archiveId, $id, true);
+            }
+    
+            IPS_ApplyChanges($archiveId);
+        }
+    
+        public function DisableLogging()
+        {
+            $archiveId = IPS_GetInstanceListByModuleID('{43192F0B-135B-4CE7-A0A7-1475603F3060}')[0];
+            $arr = ['Online'];
+            
+            foreach ($arr as &$ident) {
+                $id = $this->GetIDForIdent($ident);
+                if ($id == 0) {
+                    continue;
+                }
+                AC_SetGraphStatus($archiveId, $id, false);
+                AC_SetLoggingStatus($archiveId, $id, false);
+            }
+    
+            IPS_ApplyChanges($archiveId);
         }
 
         public function Update()
