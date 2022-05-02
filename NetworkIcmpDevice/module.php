@@ -1,7 +1,7 @@
 <?php
 
 declare(strict_types=1);
-    class NetworkDevice extends IPSModule
+    class NetworkIcmpDevice extends IPSModule
     {
         public function Create()
         {
@@ -101,4 +101,8 @@ declare(strict_types=1);
                 }
             }
         }
+		public function GetState()
+		{
+			return $this->GetValue('Online');
+		}
     }
