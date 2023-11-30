@@ -8,18 +8,22 @@ declare(strict_types=1);
             //Never delete this line!
             parent::Create();
 
+			$this->RegisterVariableProfiles();
+
             $this->RegisterPropertyString('Host', '127.0.0.1');
             $this->RegisterPropertyInteger('Timeout', 1000);
             $this->RegisterPropertyInteger('RetryError', 5);
             $this->RegisterPropertyInteger('RetryOk', 5);
             $this->RegisterPropertyInteger('UpdateInterval', 60);
 
-            $this->RegisterVariableBoolean('Online', $this->Translate('Online'), '~Alert.Reversed', 1);
+            $this->RegisterVariableBoolean('Online', $this->Translate('Online'), 'NET_Online', 1);
 
             $this->RegisterTimer('Update', $this->ReadPropertyInteger('UpdateInterval') * 1000, 'NET_Update($_IPS[\'TARGET\']);');
 
             $this->SetBuffer('ErrorCount', 0);
             $this->SetBuffer('OnlineCount', 0);
+			
+			
         }
 
         public function ApplyChanges()
@@ -70,9 +74,9 @@ declare(strict_types=1);
         {
             $host = $this->ReadPropertyString('Host');
             $timeout = $this->ReadPropertyInteger('Timeout');
-
-            $response = Sys_Ping($host, $timeout);
-
+			$response = @Sys_Ping($host, $timeout);
+			$this->MaintainVariable('Online', $this->Translate('Online'), 0, 'NET_Online', 1,true);
+			
             if ($response) {
                 $this->SendDebug('Update()', 'Sys_Ping('.$host.','.$timeout.') => true', 0);
                 if ($this->GetBuffer('ErrorCount') != '0') {
@@ -104,5 +108,17 @@ declare(strict_types=1);
 		public function GetState()
 		{
 			return $this->GetValue('Online');
+		}
+		
+		
+		private function RegisterVariableProfiles()
+		{
+		$this->SendDebug('RegisterVariableProfiles()', 'RegisterVariableProfiles()', 0);
+
+        if (!IPS_VariableProfileExists('NET_Online')) {
+            IPS_CreateVariableProfile('NET_Online', 0);
+            IPS_SetVariableProfileAssociation('NET_Online', 0, $this->Translate('Offline'), 'Warning', 0xFF0000);
+            IPS_SetVariableProfileAssociation('NET_Online', 1, $this->Translate('Online'), 'Ok', 0x00FF00);
+		}
 		}
     }
