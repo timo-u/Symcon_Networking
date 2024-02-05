@@ -1,0 +1,46 @@
+{
+  "elements": [
+    {
+      "type": "ValidationTextBox",
+      "name": "Url",
+      "caption": "Url"
+    },
+    {
+      "type": "NumberSpinner",
+      "name": "Timeout",
+      "caption": "Timeout",
+      "suffix": "s",
+      "minimum": 1,
+      "maximum": 60
+    },
+    {
+      "type": "NumberSpinner",
+      "name": "UpdateInterval",
+      "caption": "Update Interval",
+      "suffix": "s",
+      "minimum": 0
+    },
+    {
+      "type": "Label",
+      "caption": "only for SSL:"
+    },
+    {
+      "type": "CheckBox",
+      "name": "VerifyHost",
+      "caption": "Verify Host"
+    },
+    {
+      "type": "CheckBox",
+      "name": "VerifyPeer",
+      "caption": "Verify Peer"
+    }
+  ],
+  "actions": [
+    {
+      "type": "Button",
+      "label": "Update",
+      "onClick": "echo NET_Update($id);"
+    }
+  ],
+  "status": []
+}

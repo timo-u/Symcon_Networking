@@ -1,0 +1,13 @@
+{
+	"id": "{B1EAE5C5-FD01-5AAD-4463-60944CFCB5A4}",
+	"name": "HttpDevice",
+	"type": 3,
+	"vendor": "universal",
+	"aliases": [
+		"Http Device"
+	],
+	"parentRequirements": [],
+	"childRequirements": [],
+	"implemented": [],
+	"prefix": "NET"
+}
