@@ -8,7 +8,7 @@
 			"only for SSL:": "nur für SSL:",
 			"Statuscode": "Statuscode",
 			"Verify Host": "Server Überprüfen",
-            "Verify Peer": "Zertifikat Prüfen",
+			"Verify Peer": "Zertifikat Prüfen",
 			"Connection Failed": "Verbindung fehlgeschlagen"
 		}
 	}
